@@ -1,0 +1,18 @@
+.header{
+    background-color: red;
+}
+.search{
+    box-shadow: 1px 1px 10px rgb(0 0 0 / 50%);
+    border-radius: 4px;
+    display: flex;
+    overflow: hidden;
+    align-items: center;
+    background-color: white;
+}
+.input{
+    border: 0;
+    width: 100%;
+    &:focus{
+        outline: none;
+    }
+}
