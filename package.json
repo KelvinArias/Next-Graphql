@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "server": "nodemon server.js",
     "dev": "next",
     "build": "next build",
     "start": "next start"
@@ -21,7 +22,8 @@
     "react-redux": "^7.2.2",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
-    "sass": "^1.32.5"
+    "sass": "^1.32.5",
+    "yelp-fusion": "^3.0.0"
   },
   "devDependencies": {
     "dotenv": "^8.2.0"
