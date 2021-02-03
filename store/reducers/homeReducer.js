@@ -1,17 +1,36 @@
-import * as types from "../types"
+import * as TYPES from "../types"
+//import dataExample from "./dataExample"
 
 const initialState = {
     businesses: [],
-    isLoadingBusiness: true
+    viewedBusinesses: [],
+    isLoading: true, 
+    isLoadingReviews:true,
 }
 
 export default function historyReducer(state = initialState, action){
     switch (action.type){
-        case "SET_BUSINESS":
+        case TYPES.SET_BUSINESS:
             return {
                 ...state,
                 businesses: action.payload,
-                isLoadingBusiness: false,
+                isLoading: false,
+            }
+        case TYPES.SET_REVIEWS:
+            return {
+                ...state,
+                reviews: action.payload,
+                isLoadingReviews: false,
+            }
+        case TYPES.INIT_LOADING: 
+            return {
+                ...state,
+                ...action.loadingToInit
+            }
+        case TYPES.MARK_AS_SEEN:
+            return {
+                ...state,
+                viewedBusinesses: [...state.viewedBusinesses, action.id]
             }
         default:
             return state

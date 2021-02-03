@@ -17,7 +17,7 @@ const Header = ({ setSearch }) => {
                                 <input 
                                     placeholder="Search by location..."
                                     className={`${styles.input} p-2`} 
-                                    onKeyPress={(e) => e.key === "Enter" && search(e.currentTarget.value)}
+                                    onKeyPress={(e) => e.key === "Enter" && setSearch(e.currentTarget.value)}
                                     ref={refInput}
                                 />
                             </div>

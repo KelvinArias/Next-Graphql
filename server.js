@@ -44,7 +44,7 @@ const resolvers = {
     Query: {
         search: async (_, { location }) => {
             const resp = await client.search({ location, limit: 10 })
-            console.log(resp.jsonBody.businesses[0])
+            console.log(resp.jsonBody.businesses)
             return resp.jsonBody.businesses
         },
         getReviews: async (_, { alias }) => {
