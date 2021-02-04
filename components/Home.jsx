@@ -4,26 +4,31 @@ import PropTypes from "prop-types";
 import Header from "./Header.jsx";
 import Card from "./Card.jsx";
 import TitleSearch from "./TitleSearch.jsx"
-import { getBusiness, getReviews, initLoading, markAsSeen } from "../store/actions/homeActions"
 import Loading from "./Loading"
+import Detail from "./Detail"
+import { getBusiness, getReviews, initLoading, getDetail } from "../store/actions/homeActions"
 
 
 const Home = props => {
     const [searchValue, setSearch] = useState("Seattle")
-    const { isLoading, businesses, viewedBusinesses } = props.data;
+    const [openDetail, setOpen] = useState(false);
+    const { isLoading, businesses, viewedBusinesses, businessDetail, isLoadingDetail } = props.data;
+
     const handleInit = () => {
         props.getBusiness(searchValue)
         props.initLoading({ isLoading: true })
     }
 
-    const handleViewReview = ({ alias, id }) => {
+    const handleViewBusiness = ({ alias }) => {
+        props.getDetail(alias);
         props.getReviews(alias);
-        props.initLoading({ isLoadingReviews: true });
-        props.markAsSeen(id)
+        props.initLoading({ isLoadingReviews: true, isLoadingDetail: true });
+        setOpen(true)
     }
 
     React.useEffect(handleInit, [searchValue]);
     const handleSearch = (newValue) => setSearch(newValue);
+    const handleClose = () => setOpen(false)
 
     return (
         <React.Fragment>
@@ -38,13 +43,18 @@ const Home = props => {
                             <Card 
                                 business={business}
                                 key={business.id}
-                                viewReview={handleViewReview}
+                                viewBusiness={handleViewBusiness}
                                 viewed={viewedBusinesses.includes(business.id)}
                             />
                         ))}
                     </div>
                 </div>
             )}
+            {openDetail && <Detail 
+                closeDetail={handleClose} 
+                business={businessDetail} 
+                isLoading={isLoadingDetail} 
+            />}
         </React.Fragment>
     )
 } 
@@ -54,7 +64,7 @@ Home.propTypes = {
     getBusiness: PropTypes.func.isRequired,
     getReviews:  PropTypes.func.isRequired,
     initLoading: PropTypes.func.isRequired,
-    markAsSeen: PropTypes.func.isRequired
+    getDetail: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({
@@ -62,5 +72,5 @@ const mapStateToProps = (state) => ({
 });
   
 export default connect(mapStateToProps, { 
-    getBusiness, initLoading, markAsSeen, getReviews
+    getBusiness, initLoading, getDetail, getReviews
 })(Home);

@@ -65,7 +65,44 @@ export const initLoading = (loadingToInit) => ({
     loadingToInit
 })
 
-export const markAsSeen = id => ({
-    type: TYPE.MARK_AS_SEEN,
-    id
-})
+export const getDetail = (alias) => async dispatch => {
+    const query = `
+    {
+        getDetail(alias: "${alias}") {
+            id
+            name
+            alias
+            rating
+            is_closed
+            hours{
+                open{
+                    is_overnight
+                    start
+                    end
+                    day
+                }
+                hours_type
+                is_open_now
+            }
+            photos
+            price
+            review_count
+            display_phone
+            image_url
+            location{
+                display_address
+            }
+        }
+    }
+    `
+    try {
+        const graphQLClient = new GraphQLClient(endpoint, {method: 'POST'})
+        const data = await graphQLClient.request(query)
+        dispatch({
+            type: TYPE.SET_DETAIL,
+            payload: data.getDetail
+        })   
+    } catch (error) {
+        console.log(error)
+    }
+}

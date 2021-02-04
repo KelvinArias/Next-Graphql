@@ -4,7 +4,10 @@ import * as TYPES from "../types"
 const initialState = {
     businesses: [],
     viewedBusinesses: [],
-    isLoading: true, 
+    businessDetail: {},
+    businessReview: [],
+    isLoading: true,
+    isLoadingDetail: true, 
     isLoadingReviews:true,
 }
 
@@ -19,7 +22,7 @@ export default function historyReducer(state = initialState, action){
         case TYPES.SET_REVIEWS:
             return {
                 ...state,
-                reviews: action.payload,
+                businessReview: action.payload,
                 isLoadingReviews: false,
             }
         case TYPES.INIT_LOADING: 
@@ -27,10 +30,12 @@ export default function historyReducer(state = initialState, action){
                 ...state,
                 ...action.loadingToInit
             }
-        case TYPES.MARK_AS_SEEN:
+        case TYPES.SET_DETAIL:
             return {
                 ...state,
-                viewedBusinesses: [...state.viewedBusinesses, action.id]
+                viewedBusinesses: [...state.viewedBusinesses, action.payload.id],
+                businessDetail: action.payload,
+                isLoadingDetail: false,
             }
         default:
             return state

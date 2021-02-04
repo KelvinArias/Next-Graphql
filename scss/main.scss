@@ -209,6 +209,10 @@ body{
     border: 1px solid #c4c4c4
 }
 
+.position-relative{
+    position: relative;
+}
+
 .align-center{
     align-items: center;
 }
@@ -217,7 +221,7 @@ h1, h2, h3, h4, h5, h6{
     font-family: 'Poppins', sans-serif;
 }
 
-span, p{
+span, p, td, tr{
     font-family: 'Open Sans', sans-serif;
 }
 
