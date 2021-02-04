@@ -14,11 +14,11 @@ To use the yelp API, you must have an API_KEY, which you can generate at: (https
 
 ## 🚀 Usage
 
-<li>
-    <ol>Create an .env file</ol>
-    <ol>Create a variable with the name API_KEY</ol>
-    <ol>Put your API_KEY in the variable</ol>
-</li>
+<ul>
+    <li>Create an .env file</li>
+    <li>Create a variable with the name API_KEY</li>
+    <li>Put your API_KEY in the variable</li>
+</ul>
 
 Just run the following command at the root of the project:
 
