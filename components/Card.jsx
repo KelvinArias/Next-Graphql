@@ -8,7 +8,7 @@ const Card = props => {
     const { viewed } = props;
 
     return (
-        <div className="col-xs-6 col-sm-4 col-md-3 p-3">
+        <div className="col-xs-12 col-sm-6 col-md-3 p-3">
             <div className={style.card} onClick={() => props.viewBusiness(props.business)}>
                 <div className={style.header}>
                     <Image

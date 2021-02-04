@@ -5,7 +5,7 @@
 `yelp-search` This project is made purely for educational use, please follow the instructions below to see the result on your machine.
 
 <p align="center">
-  <img width="700" align="center" src="https://raw.githubusercontent.com/KelvinArias/Next-Graphql/e85e78d9ba2cac953ced5a0f82cf9ffeae2e63aa/demo.png" alt="demo"/>
+  <img width="700" align="center" src="https://raw.githubusercontent.com/KelvinArias/Next-Graphql/main/demo.png" alt="demo"/>
 </p>
 
 ## 🚀 Prerequisites

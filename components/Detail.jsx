@@ -41,7 +41,7 @@ const Content = props => {
     
     return (
         <Fragment>
-            <div className={style.left}>
+            <div className={`${style.left} col-xs-12 col-sm-6 p-0`}>
                 {is_closed === "false" 
                     ? <div className={style.openOrClosed}><Image src="/image/open.svg" width={50} height={50} alt="is open" /></div> 
                     : <div className={style.openOrClosed}><Image src="/image/closed.svg" width={50} height={50} alt="is closed" /></div>
@@ -56,7 +56,7 @@ const Content = props => {
                 <Stars rating={rating} />
                 <h3 className={style.title}>{name}</h3>
             </div>
-            <div className={style.right}>
+            <div className={`${style.right} col-xs-12 col-sm-6`}>
                 {mapInfo.map(info => (
                     <div className="d-flex pb-2 info" key={info.title}>
                         <p className={`${style.text} mr-2`}><strong>{info.title}</strong></p>

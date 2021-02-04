@@ -50,13 +50,11 @@
 .left{
     position: relative;
     display: flex;
-    max-width: 50%;
 }
 
 .right{
     padding: 16px;
     overflow: auto;
-    width: 50%;
 }
 
 .close{
@@ -79,10 +77,20 @@
     max-width: 800px;
     max-height: 400px;
     display: flex;
-    min-height: 400px;
     background-color: white;
     position: relative;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+@media (max-width: 750px) {
+    .content{
+        flex-wrap: wrap;
+        max-width: 400px;
+        overflow: auto;
+        max-height: initial;
+        top: 25px;
+        transform: translate(-50%, 0);
+    }
 }
